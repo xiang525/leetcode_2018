@@ -1,0 +1,322 @@
+1. merge sort: Merge sort 算法的思想就是把数组分成更小的数组，合并的时候再排序。由于是二分，所以总的时间为 T(n) = 2 T(n/2) + \theta (n) = O(n * logn)。
+经典排序算法 - 归并排序Merge sort：原理,把原始数组分成若干子数组,对每一个子数组进行排序, 续把子数组与子数组合并,合并后仍然有序,直到全部合并完,形成有序的数组。
+
+经典排序算法 - 冒泡排序Bubble sort
+原理是临近的数字两两进行比较,按照从小到大或者从大到小的顺序进行交换,
+这样一趟过去后,最大或最小的数字被交换到了最后一位,
+然后再从头开始进行两两比较交换,直到倒数第二位时结束,其余类似看例子。
+
+插入排序：（insertion sort O(n^2)）
+插入排序的工作原理是，对于每个未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。
+1. 从第一个元素开始，该元素可以认为已经被排序
+2. 取出下一个元素，在已经排序的元素序列中从后向前扫描
+3. 如果被扫描的元素（已排序）大于新元素，将该元素后移一位
+4. 重复步骤3，直到找到已排序的元素小于或者等于新元素的位置
+5. 将新元素插入到该位置后
+6. 重复步骤2~5
+
+经典排序算法 - 选择排序Selection sort (O(n^2))
+顾名思意,就是直接从待排序数组里选择一个最小(或最大)的数字,每次都拿一个最小数字出来,
+顺序放入新数组,直到全部拿完， 再简单点,对着一群数组说,你们谁最小出列,站到最后边
+然后继续对剩余的无序数组说,你们谁最小出列,站到最后边
+再继续刚才的操作,一直到最后一个,继续站到最后边,现在数组有序了,从小到大。
+
+Quick Sort (O(nlogn)):
+快速排序以其接近于O(nlogn)的时间复杂度和最多log(2n)的空间复杂度公认为 目前最快的排序算法
+该方法的基本思想是：
+1．先从数列中取出一个数作为基准数。
+2．分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。
+3．再对左右区间重复第二步，直到各区间只有一个数
+
+
+
+拓扑排序(topological sort):
+拓扑排序，是对有向无回路图进行排序，以期找到一个线性序列，这个线性序列在生活正可以表示某些事情完成的相应顺序。如果说所求的图有回路的话，则不可能找到这个序列。
+A youtube video: https://www.youtube.com/watch?v=jksMzq4LgfM
+
+
+2. Insertion Sort: 插入排序(Insertion Sort)的基本思想是：每次将一个待排序的记录，按其关键字大小插入到前面已经排好序的子文件中的适当位置，直到全部记录插入完成为止。
+
+3. Backtracking: 回溯算法也算是遍历算法的一种，回溯算法是对Brute-Force算法的一种改进算法，一个典型的应用是走迷宫问题，当我们走一个迷宫时，如果无路可走了，那么我们就可以退一步，再在其他的路上尝试一步，如果还是无路可走，那么就再退一步，尝试新的路，直到走到终点或者退回到原点。
+
+4. Greedy: http://www.cnblogs.com/steven_oyj/archive/2010/05/22/1741375.html
+
+5. Binary search tree: http://noalgo.info/603.html
+
+6. Trie Tree: http://blog.csdn.net/lisonglisonglisong/article/details/45584721
+http://www.cnblogs.com/huangxincheng/archive/2012/11/25/2788268.html
+
+7. data structure: http://www.cnblogs.com/huangxincheng/archive/2012/07/22/2603956.html
+
+8. python operators: http://woodpecker.org.cn/abyteofpython_cn/chinese/ch05s02.html
+
+9. http://blog.csdn.net/lcore/article/details/8880475
+
+10. N-queeen: http://baike.baidu.com/view/698719.htm?fromtitle=%E5%85%AB%E7%9A%87%E5%90%8E&fromid=10742426&type=search
+backpacking: http://blog.csdn.net/hackbuteer1/article/details/6657109
+
+
+11. backpacking: http://blog.csdn.net/hackbuteer1/article/details/6657109
+
+12. 桶排序 Bucket sort:
+桶排序 (Bucket sort)或所谓的箱排序的原理是将数组分到有限数量的桶子里，然后对每个桶子再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排序），最后将各个桶中的数据有序的合并起来。
+1. 假设待排序的一组数统一的分布在一个范围中，并将这一范围划分成几个子范围，也就是桶
+2. 将待排序的一组数，分档规入这些子桶，并将桶中的数据进行排序
+3. 将各个桶中的数据有序的合并起来
+http://bubkoo.com/2014/01/15/sort-algorithm/bucket-sort/
+
+13. http://www.jiuzhang.com/solutions/
+http://siddontang.gitbooks.io/leetcode-solution/content/index.html
+http://algorithm.yuanbin.me/
+http://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+https://github.com/billryan/algorithm-exercise
+
+14. Analysis of algorithm (running time):
+
+15 卡特兰数：Catalan数： http://blog.csdn.net/hackbuteer1/article/details/7450250
+ http://www.cppblog.com/MiYu/archive/2010/08/07/122573.html
+
+16. Trie树，又称字典树，单词查找树或者前缀树，是一种用于快速检索的多叉树结构，如英文字母的字典树是一个26叉树，数字的字典树是一个10叉树。Trie树可以利用字符串的公共前缀来节约存储空间。
+在该trie树中，字符串in，inn和int的公共前缀是“in”，因此可以只存储一份“in”以节省空间。当然，如果系统中存在大量字符串且这些字符串基本没有公共前缀，则相应的trie树将非常消耗内存，这也是trie树的一个缺点。
+Trie树的基本性质可以归纳为：
+（1）根节点不包含字符，除根节点以外每个节点只包含一个字符。
+（2）从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。
+（3）每个节点的所有子节点包含的字符串不相同。
+使用范围：既然学Trie树，我们肯定要知道这玩意是用来干嘛的。
+第一：词频统计。可能有人要说了，词频统计简单啊，一个hash或者一个堆就可以打完收工，但问题来了，如果内存有限呢？还能这么玩吗？所以这里我们就可以用trie树来压缩下空间，因为公共前缀都是用一个节点保存的。
+第二: 前缀匹配。就拿上面的图来说吧，如果我想获取所有以"a"开头的字符串，从图中可以很明显的看到是：and,as,at，如果不用trie树，你该怎么做呢？很显然朴素的做法时间复杂度为O(N2)，那么用Trie树就不一样了，它可以做到h，h为你检索单词的长度，可以说这是秒杀的效果。
+
+
+class TrieNode:
+    def __init__(self):
+        self.childs = dict()
+        self.isWord = False
+
+
+class WordDictionary:
+    # initialize your data structure here.
+    def __init__(self):
+        self.root = TrieNode()
+
+
+
+    # @param {string} word
+    # @return {void}
+    # Adds a word into the data structure.
+    def addWord(self, word):
+        node = self.root
+        for letter in word:
+            child = node.childs.get(letter)
+            if child == None:
+                child = TrieNode()
+                node.childs[letter] = child
+            node = child
+        node.isWord = True
+
+
+
+    # @param {string} word
+    # @return {boolean}
+    # Returns if the word is in the data structure. A word could
+    # contain the dot character '.' to represent any one letter.
+    def search(self, word):
+        return self.find(self.root,word)
+
+    def find(self,node,word):
+        if word == '':
+            return node.isWord
+        if word[0] == '.':
+            for i in node.childs:
+                if self.find(node.childs[i],word[1:]):
+                    return True
+        else:
+            child = node.childs.get(word[0])
+            if child:
+                return self.find(child,word[1:])
+        return False
+
+
+17. 补码：
+负数在计算机中是以补码形式存储的，补码就是原码取反加一
+4的原码为00000000 00000000 00000000 00000100，其反码为11111111 11111111 11111111 11111011，补码为11111111 11111111 11111111 11111100
+
+18. 堆 Heap:
+堆（也叫优先队列），是一棵完全二叉树，它的特点是父节点的值大于（小于）两个子节点的值（分别称为大顶堆和小顶堆）。它常用于管理算法执行过程中的信息，应用场景包括堆排序，优先队列等。
+堆是一棵完全二叉树，高度为O（lg n）,其基本操作至多与树的高度成正比.
+A：用于表示堆的数组，下标从1开始，一直到n
+PARENT(t)：节点t的父节点，即floor(t/2)
+RIGHT(t)：节点t的左孩子节点，即:2*t
+LEFT(t)：节点t的右孩子节点，即:2*t+1
+HEAP_SIZE(A)：堆A当前的元素数目
+
+堆排序O(nlogn):如果是从小到大排序，用大顶堆；从大到小排序，用小顶堆。
+
+Python堆操作真方便:
+heapq.heapify(a) 把list a中元素调换顺序使其成为最小堆, a还是list
+heapq.heappush(a, (10, sth_else))  把(10, sth_else)插入堆a中, a仍为最小堆, 也可以只插入数10
+heapq.heappop(a) 弹出堆顶元素, a中的最小值
+heapq.heappushpop(a, (10, sth_else)) 先push再pop, 效率比依次调用heappush()和heappop()高
+
+
+19. 常见数据结构
+线性：数组，链表，队列，堆栈，块状数组（数组+链表），hash表，双端队列，位图（bitmap）
+树：堆（大顶堆、小顶堆），trie树（字母树or字典树），后缀树，后缀树组，二叉排序/查找树，B+/B-，AVL树，Treap，红黑树，splay树，线段树，树状数组
+图：图
+其它：并查集
+
+常见算法
+（1）       基本思想：枚举，递归，分治，模拟，贪心，动态规划，剪枝，回溯
+（2）       图算法：深度优先遍历与广度优先遍历， 最短路径，最小生成树，拓扑排序
+（3）       字符串算法：字符串查找，hash算法，KMP算法
+（4）       排序算法：冒泡，插入，选择，快排，归并排序，堆排序，桶排序
+（5）       动态规划：背包问题，最长公共子序列，最优二分检索树
+（6）       数论问题：素数问题，整数问题，进制转换，同余模运算，
+（7）       排列组合：排列和组合算法
+（8）       其它：LCA与RMQ问题
+
+
+20. red-black tree:
+
+Design:
+cassandra, HDFS, Zookeeper, Kafka, Storm 读懂documentation 通吃。排名分先后
+
+Algorithm books:
+http://www.stanford.edu/class/cs97si/
+http://interactivepython.org/runestone/static/pythonds/index.html
+
+
+21. 双向链表 Doubly-linked list
+双向链表是在单项链表的基础上，在每个节点增加一个指向前一个节点的指针prev.
+由于双向链表中，每个节点都有两个指针，分别指向前一个节点和后一个节点。显然，链表中第一个元素的前向指针指向NULL空指针，最后一个元素的后向指针也指向NULL空指针。很多时候，操纵链表需要使用空指针作为判定条件。
+
+22. KMP算法
+Knuth-Morris-Pratt 字符串查找算法，简称为 “KMP算法”，常用于在一个文本串S内查找一个模式串P的出现位置，
+
+23. bit manipulation
+<< 左移 各二进位全部左移若干位，高位丢弃，低位补0;
+>> 右移 各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）;
+
+常用位操作小技巧:
+1. 判断奇偶: 只要根据最未位是0还是1来决定，为0就是偶数，为1就是奇数。因此可以用if ((a & 1) == 0)代替if (a % 2 == 0)来判断a是不是偶数。
+
+24. overfloat boarder:
+int_max = 2147483647 (or -(1<<31))    int_min = -2147483648 (or (1<<31)-1)
+
+
+
+SQL:
+http://www.w3schools.com/sql/sql_intro.asp
+
+Frequency of Leetcode:
+http://www.cppblog.com/abilitytao/archive/2013/09/16/203270.html
+
+
+
+Communication:
+http://dongfei.baijia.baidu.com/article/52449
+
+
+
+Experience:
+http://chinakarpay.com/html/gushilianzai/2015/0115/3375.html
+
+
+
+
+
+
+
+
+
+############################## Summary ################################
+1. Linklist
+(1) reverse a linklist:
+示意图解释： http://blog.csdn.net/feliciafay/article/details/6841115
+(2) insertion:
+http://www.cnblogs.com/zuoyuan/p/3700105.html
+
+2. Bit manipulation：
+The other two operators we will need are the shift operators a << b and a >> b.
+The former shifts all the bits in a to the left by b positions; the latter does the same but shifts right.
+For non-negative values (which are the only ones we’re interested in), the newly exposed bits are filled with zeros.
+You can think of left-shifting by b as multiplication by 2b and right-shifting as integer division by 2b.
+The most common use for shifting is to access a particular bit, for example, 1 << x is a binary number with bit x set
+and the others clear (bits are almost always counted from the right-most/least-significant bit, which is numbered 0).
+
+3. xor 异火是相同为0， 相异为1
+
+4. Gray code: convert between gray code and binary code
+http://www.bianceng.cn/Programming/sjjg/200901/11202.htm
+
+5. leetcode题出现频率  http://wwwx.cs.unc.edu/~zhew/Leetcoder/
+leetcode 题总结： http://wlcoding.blogspot.com/2015/03/n-sum-2sum-i-ii-iii-3sum-i-ii-4sum-i.html?view=sidebar
+
+
+6. 面试经验贴：
+http://www.mitbbs.com/article_t/JobHunting/33010083.html
+算法动态图： http://visualgo.net/
+kmp 算法： http://blog.csdn.net/v_july_v/article/details/7041827
+
+
+#*******************  知识点 ****************
+1. 按层遍历二叉树, binary search tree
+2. palindromic 回文
+3. 环形dp问题 （213）
+4. 字典树
+5. Greedy
+6. DP
+7. Bit manipulation
+8. 树的三种遍历
+9. 链表的几种操作
+10. 排列组合， 枚举 (dfs, bfs);要分清有时候也不用dfs
+11. recrusive
+12. binary search
+13. merge sort
+14. math problems
+15. 递推， 模拟法
+16. 夹逼法
+17. harsh table
+18. 双向链表
+19. KMP 算法
+
+
+Data structure:
+Link list, tree(BST), graph, stack, hashmap, array, string.
+Also: trie, suffix tree, Red-black tree.
+
+
+Algorithm:
+DP, DC, tree traversal, some string pattern comparison algorithm including
+KMP, rolling hash.
+
+
+考点:
+1. palindrome:  x == x[::-1]回文
+
+2. Tree: Tree的很多题都可以用递归来解决
+(1） 树的高度 = max(左子树高度，右子树高度)+1(根节点要算上)
+    def treeHeight(self,root):
+        if not root:return 0
+        else:
+            return max(self.treeHeight(root.right),self.treeHeight(root.left)) + 1
+ (2）判断为叶子节点： root.left == None and root.right == None
+ (3) 按层遍历
+
+
+
+3. dp 问题， 初始化总是(n+1) if return dp[n];要注意初始化特殊的开始点
+
+4. 字符操作， 小写相应的大写大32, 可以用chod(), char()转换
+
+5. 位操作
+
+6. Topological Sort: is a linear ordering of all its vertices such that if G contains an edge(u,v), then u appears before v in the ordering. If the graph contains a cycle, then no linear ordering is possible. We can use DFS to perform a topological sort of a directed acyclic graph (DAG).  O(V+E)
+1. 从 DAG 图中选择一个 没有前驱（即入度为0）的顶点并输出。
+2. 从图中删除该顶点和所有以它为起点的有向边。
+3. 重复 1 和 2 直到当前的 DAG 图为空或当前图中不存在无前驱的顶点为止。后一种情况说明有向图中必然存在环。
+一个有向无环图可以有一个或多个拓扑排序序列。
+
+http://www.geeksforgeeks.org/topological-sorting/
+http://songlee24.github.io/2015/05/07/topological-sorting/ (in Chinese)
+
+directed acyclic graph (DAG): is a directed graph with no directed cycles.
