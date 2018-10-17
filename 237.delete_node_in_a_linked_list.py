@@ -8,7 +8,7 @@ class Solution:
     # @param {ListNode} node
     # @return {void} Do not return anything, modify node in-place instead.
     def deleteNode(self, node):
-        node.val = node.next.val
+        node.val = node.next.val # infact it deletes the node after it
         node.next = node.next.next
 
 

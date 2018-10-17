@@ -99,6 +99,52 @@ class Solution(object):
         mNode.next = postNode
         preNode.next = nNode
         return dummy.next
+
+
+"""""""""
+A more clear solution
+"""""""""
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def reverseBetween(self, head, m, n):
+        """
+        :type head: ListNode
+        :type m: int
+        :type n: int
+        :rtype: ListNode
+        """
+        if m >= n or not head:return head
+        dummy = ListNode(0); dummy.next = head
+        m_prev = self.findKth(dummy,m-1)
+        mth = m_prev.next
+        nth = self.findKth(dummy,n)
+        nth_next = nth.next
+        nth.next = None
+        m_prev.next = self.reverse(mth)
+        mth.next = nth_next
+        return dummy.next
+        
+        
+    def findKth(self,head,k):
+        for i in range(1,k+1):
+            if not head:return None
+            head = head.next
+        return head
+        
+        
+    def reverse(self,head):
+        prev = None
+        while head:
+            tmp = head.next
+            head.next = prev
+            prev = head
+            head = tmp
+        return prev
     
 
 
