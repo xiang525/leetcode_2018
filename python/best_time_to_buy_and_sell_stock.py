@@ -29,3 +29,28 @@ class Solution(object):
             min_value = min(min_value,prices[i])
             profit = max(profit,prices[i]-min_value)            
         return profit
+
+
+"""
+my own DP solution and need to think about how many variables needs to be maintained. Here only one, profit. 
+No need to use opt[] array
+"""
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        n = len(prices)
+        if n == 0: return 0
+        opt = [0 for i in range(n)]
+        opt[0] = 0
+        minvalue = prices[0]
+        for i in range(1, n):
+            minvalue = min(minvalue, prices[i])
+            if prices[i] < opt[i - 1]:
+                opt[i] = prices[i]
+            else:
+                opt[i] = max(prices[i] - minvalue, opt[i - 1]) # select or not select the i-th element
+
+        return max(opt)
