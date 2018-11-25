@@ -1,29 +1,23 @@
-import sys
 class Solution(object):
-    def maxProfit(self, prices):
+    def anagramMappings(self, A, B):
         """
-        :type prices: List[int]
-        :rtype: int
+        :type A: List[int]
+        :type B: List[int]
+        :rtype: List[int]
         """
-        n = len(prices)
-        if n == 0: return 0
-        opt = [0 for i in range(n)]
-        opt[0] = 0
-        minvalue = prices[0]
-        for i in range(1, n):
-            minvalue = min(minvalue, prices[i])
-            if prices[i] < opt[i-1]:
-                opt[i] = prices[i]
-            else:
-                print(prices[i], minvalue)
-                opt[i] = max(prices[i] - minvalue, opt[i-1])
-            print(opt)
-        return max(opt)
+        d = {}
+        n = len(A)
+        for i in range(n):
+            for j in range(n):
+                if A[i] == B[j]:
+                    d[i] = j
+        return d
 
 
 
 
 a = Solution()
-prices = [1,2]
-value = a.maxProfit(prices)
-print(value)
+A = [12,28,46,32,50]
+B = [50,12,32,46,28]
+d = a.anagramMappings(A, B)
+print (d)
