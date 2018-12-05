@@ -24,8 +24,24 @@ class Solution:
                 return True
             d[nums[i]] = i 
         return False
-        
 
+"""
+Another solution uses dictionary and enumerate
+"""
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: bool
+        """
+        d = {}
+        n = len(nums)
+        for index, value in enumerate(nums):
+            if value in d and index - d[value] <= k:
+                return True
+            d[value] = index
+        return False
 
 if __name__ == '__main__':
 	a = Solution()

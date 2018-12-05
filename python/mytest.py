@@ -1,23 +1,20 @@
 class Solution(object):
-    def anagramMappings(self, A, B):
+    def containsDuplicate(self, nums):
         """
-        :type A: List[int]
-        :type B: List[int]
-        :rtype: List[int]
+        :type nums: List[int]
+        :rtype: bool
         """
-        d = {}
-        n = len(A)
-        for i in range(n):
-            for j in range(n):
-                if A[i] == B[j]:
-                    d[i] = j
-        return d
+        nums.sort()
+        print(nums)
+        for i in range(1, len(nums)):
+            if nums[i] == nums[i-1]:
+                return True
+        return False
 
 
 
 
 a = Solution()
-A = [12,28,46,32,50]
-B = [50,12,32,46,28]
-d = a.anagramMappings(A, B)
-print (d)
+nums = [1,2,3,1]
+print(a.containsDuplicate(nums))
+
