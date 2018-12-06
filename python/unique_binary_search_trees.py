@@ -8,6 +8,7 @@
 # 直接有定理
 # Catalan数： http://blog.csdn.net/hackbuteer1/article/details/7450250
 # http://www.cppblog.com/MiYu/archive/2010/08/07/122573.html
+a very good explaination: http://bangbingsyb.blogspot.com/2014/11/leetcode-unique-binary-search-trees-i-ii.html
 """
 class Solution:
     # @param {integer} n
@@ -26,6 +27,7 @@ class Solution:
 
 """
 以下处理边界的方式也是可以接受的
+即使思想对了也不好实现
 """
 class Solution(object):
     def numTrees(self, n):
