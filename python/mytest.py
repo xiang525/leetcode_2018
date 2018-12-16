@@ -1,20 +1,27 @@
 class Solution(object):
-    def containsDuplicate(self, nums):
+    def shortestWordDistance(self, words, word1, word2):
         """
-        :type nums: List[int]
-        :rtype: bool
+        :type words: List[str]
+        :type word1: str
+        :type word2: str
+        :rtype: int
         """
-        nums.sort()
-        print(nums)
-        for i in range(1, len(nums)):
-            if nums[i] == nums[i-1]:
-                return True
-        return False
+        dic = {}
+        for index, value in enumerate(words):
+            if value not in dic:
+                dic[value] = [index]
+            else:
+                dic[value] += index,
+
+        print(dic)
+        return min(set(abs(x-y) for x in dic[word1] for y in dic[word2]) - set([0]))
 
 
 
 
 a = Solution()
-nums = [1,2,3,1]
-print(a.containsDuplicate(nums))
+word = ["practice", "makes", "perfect", "coding", "makes"]
+word1 = "makes"
+word2 = "makes"
+a.shortestWordDistance(word, word1, word2)
 
