@@ -22,7 +22,7 @@ class Solution:
     		f2[i] = max(f2[i+1],maxvalue-prices[i])
     	res = 0
     	for i in range(n):
-    		res = max(rex,f1[i]+f2[i]) 
+    		res = max(res,f1[i]+f2[i]) 
     	return res
 
 
@@ -52,4 +52,35 @@ class Solution(object):
         for i in range(n):
             profit = max(profit, left[i]+right[i])
         return profit
+
+
+"""
+Solution with DP
+"""
+
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        n = len(prices)
+        if n == 0:
+            return 0
+        f1 = [0]*n
+        f2 = [0]*n
+        minvalue = prices[0]
+        for i in range(1, n):
+            minvalue = min(minvalue, prices[i])
+            f1[i] = max(prices[i] - minvalue, f1[i-1])
+
+        maxvalue = prices[n-1]
+        for i in range(n-2, -1, -1): # don't know where is the last transaction ending point, so from the end to the front search for the 2nd max value
+            maxvalue = max(maxvalue, prices[i])
+            f2[i] = max(maxvalue - prices[i], f2[i+1])
+
+        ans = 0
+        for i in range(n):
+            ans = max(ans, f1[i] + f2[i])
+        return ans
             
