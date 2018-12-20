@@ -37,7 +37,7 @@ class Solution:
             water = (right-left) * min(height[left],height[right])
             if water > ans:
                 ans = water
-            if heiht[left] < height[right]:
+            if height[left] < height[right]:
                 left += 1
             else:
                 right -= 1
