@@ -46,6 +46,39 @@ class Solution(object):
         return len(dp)
 
 
+class Solution(object):
+    def lengthOfLIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+        size = len(nums)
+        ans = []
+
+        for x in range(size):
+            low = 0
+            high = len(ans)-1
+
+            while low <= high:
+
+                mid = (low+high)/2
+
+                if ans[mid] < nums[x]:  
+                    low = mid+1
+                else:
+                   
+                    high = mid-1
+
+            if low >= len(ans):  
+                ans.append(nums[x])
+            else: 
+                ans[low] = nums[x]
+        return len(ans)
+
+
+
+
 
 
 

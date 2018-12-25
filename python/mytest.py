@@ -1,27 +1,26 @@
 class Solution(object):
-    def shortestWordDistance(self, words, word1, word2):
+    def maximumGap(self, nums):
         """
-        :type words: List[str]
-        :type word1: str
-        :type word2: str
+        :type nums: List[int]
         :rtype: int
         """
-        dic = {}
-        for index, value in enumerate(words):
-            if value not in dic:
-                dic[value] = [index]
-            else:
-                dic[value] += index,
-
-        print(dic)
-        return min(set(abs(x-y) for x in dic[word1] for y in dic[word2]) - set([0]))
+        n = len(nums)
+        if n < 2:
+            return 0
+        nums.sort()
+        max_diff = -100
+        print (nums)
+        for i in range(0, n-1):
+            diff = abs(nums[i] - nums[i+1])
+            print (diff)
+            print (diff, max_diff)
+            max_diff = max(max_diff, diff)
+        return max_diff
 
 
 
 
 a = Solution()
-word = ["practice", "makes", "perfect", "coding", "makes"]
-word1 = "makes"
-word2 = "makes"
-a.shortestWordDistance(word, word1, word2)
+nums = [1, 10000000]
+print (a.maximumGap(nums))
 
