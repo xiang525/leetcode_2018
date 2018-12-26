@@ -23,7 +23,7 @@ class Solution:
     	m = len(nums1); n = len(nums2)
     	t = (m+n)/2
     	if (m+n) % 2 == 1: # 奇数个
-    		return self.getMedian(A,B,(m+n)/2 + 1)
+    		return self.getMedian(nums1, nums2, (m+n)/2 + 1)
     	else:
     		return 0.5*(self.getMedian(nums1,nums2,t) + self.getMedian(nums1,nums2,t+1))
 
@@ -39,6 +39,43 @@ class Solution:
     		return self.getMedian(A[pa:],B,k-pa) 
     	else:
     		return self.getMedian(A,B[pb:],k-pb)
+
+
+"""
+A more clear code
+"""
+class Solution(object):
+    def findMedianSortedArrays(self, A, B):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
+        lenA = len(A)
+        lenB = len(B)
+        if (lenA + lenB) % 2 == 1:
+            return self.getKth(A, B, (lenA + lenB)/2 + 1)
+        else:
+            return (self.getKth(A, B, (lenA + lenB)/2) + self.getKth(A, B, (lenA + lenB)/2 + 1)) * 0.5
+
+    def getKth(self, A, B, k):
+        lenA = len(A)
+        lenB = len(B)
+        if lenA > lenB:  # 保证A比B短
+            return self.getKth(B, A, k)
+        if lenA == 0:  # A已为空，直接返回B中间数
+            return B[k - 1]
+        if k == 1:   # 如果找的是第一个，直接返回两个数组比较小的那个
+            return min(A[0], B[0])
+
+        pa = min(k/2, lenA)
+        pb = k - pa
+
+        # 索引为pa和pb，所以是A[pa - 1] 和 B[pb - 1]
+        if A[pa - 1] <= B[pb - 1]:
+            return self.getKth(A[pa:], B, pb)
+        else:
+            return self.getKth(A, B[pb:], pa)
 
 
 """
