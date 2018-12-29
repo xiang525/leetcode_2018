@@ -1,26 +1,30 @@
 class Solution(object):
-    def maximumGap(self, nums):
+    def maxSlidingWindow(self, nums, k):
         """
         :type nums: List[int]
-        :rtype: int
+        :type k: int
+        :rtype: List[int]
         """
         n = len(nums)
-        if n < 2:
-            return 0
-        nums.sort()
-        max_diff = -100
-        print (nums)
-        for i in range(0, n-1):
-            diff = abs(nums[i] - nums[i+1])
-            print (diff)
-            print (diff, max_diff)
-            max_diff = max(max_diff, diff)
-        return max_diff
+        ans = []
+        if n == 0:
+            return ans
+        start = 0
+        
+        while start <= n-k:
+            end = start + k
+            print(start, end)
+            max_value = max(nums[start:end])
+            print (max_value)
+            ans.append(max_value)
+            start += 1
+        return ans
 
 
 
 
 a = Solution()
-nums = [1, 10000000]
-print (a.maximumGap(nums))
+nums = [1, 3, -1, -3, 5, 3, 6, 7]
+k = 3
+print(a.maxSlidingWindow(nums, k))
 
