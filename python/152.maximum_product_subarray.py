@@ -49,6 +49,37 @@ class Solution:
         return max(ps)
 
 
+"""
+an easy understanding solution
+下面这种方法也是用两个变量来表示当前最大值和最小值的，但是没有无脑比较三个数，而是对于当前的nums[i]值进行了正负情况的讨论：
+1. 当遍历到一个正数时，此时的最大值等于之前的最大值乘以这个正数和当前正数中的较大值，此时的最小值等于之前的最小值乘以这个正数和当前正数中的较小值。
+2. 当遍历到一个负数时，我们先用一个变量t保存之前的最大值mx，然后此时的最大值等于之前最小值乘以这个负数和当前负数中的较大值，
+   此时的最小值等于之前保存的最大值t乘以这个负数和当前负数中的较小值。
+3. 在每遍历完一个数时，都要更新最终的最大值。
+"""
+
+class Solution(object):
+    def maxProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        if n == 0:
+            return 0
+        mn, mx, res = nums[0], nums[0], nums[0]
+        for i in range(1, n):
+            if nums[i] > 0:
+                mx = max(nums[i], nums[i]*mx)
+                mn = min(nums[i], nums[i]*mn)
+            else:
+                t = mx
+                mx = max(nums[i], nums[i]*mn)
+                mn = min(nums[i], nums[i]*t)
+            res = max(res, mx)
+        return res
+
+
 
 
 

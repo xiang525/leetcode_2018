@@ -33,13 +33,13 @@ class Solution(object):
         """
         ans = []; deque = []
         for index, value in enumerate(nums):
-            if deque and deque[0] + k <= index:
+            if deque and deque[0] + k <= index: # out of window so need to remove the first element in the deque
                 deque.pop(0)
             while deque and nums[deque[-1]] < value:
                 deque.pop()
             deque.append(index)
-            if index+1 >= k:
-                ans.append(nums[deque[0]])
+            if index+1 >= k: # when arrives the k element in the window, maxvalue needs to be stored in ans
+                ans.append(nums[deque[0]]) # deque[0] stores the max value in the window
         return ans
 
 

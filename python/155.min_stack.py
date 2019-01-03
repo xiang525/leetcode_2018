@@ -39,6 +39,50 @@ class MinStack:
 			return self.q[len(self.q)-1][1]
 
 
+
+"""
+类似与上面的解法，但可以使代码逻辑更easy
+two stacks do insertation at the same time
+"""
+class MinStack(object):
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stack = []
+        self.minStack = []
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: void
+        """
+        self.stack.append(x)
+        if not self.minStack or self.minStack[-1] >= x:
+            self.minStack.append(x)
+        else:
+            self.minStack.append(self.minStack[-1])
+
+    def pop(self):
+        """
+        :rtype: void
+        """
+        self.stack.pop()       
+        self.minStack.pop()
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        return self.stack[-1]
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        return self.minStack[-1]
+
 """
 Solution 2: 九章讲解为什么要用两个stack
 """

@@ -160,4 +160,61 @@ class Solution(object):
         return res
 
 
+"""
+prefix + two pointers O(n)
+我们需要定义两个指针left和right，分别记录子数组的左右的边界位置，然后我们让right向右移，直到子数组和大于等于给定值或者right达到数组末尾，
+此时我们更新最短距离，并且将left像右移一位，然后再sum中减去移去的值，然后重复上面的步骤，直到right到达末尾，且left到达临界位置，即要么到达边界，要么再往右移动，和就会小于给定值。
+"""
+class Solution(object):
+    def minSubArrayLen(self, s, nums):
+        """
+        :type s: int
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        if n == 0: return 0
+        minlen = sys.maxint
+        prefixSum = 0
+        left = 0
+        for i in range(n):
+            prefixSum += nums[i]
+            while left <= i and prefixSum >= s:
+                minlen = min(minlen, i-left+1)
+                prefixSum -= nums[left]
+                left += 1
+        return 0 if minlen == sys.maxint else minlen
+
+
+"""
+O(nlogn) first making an increasing array and then use binary search
+"""
+class Solution(object):
+    def minSubArrayLen(self, s, nums):
+        """
+        :type s: int
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        l = 0
+        res = sys.maxint
+        for i in range(1, n):
+            nums[i] += nums[i-1]
+            
+        for i, value in enumerate(nums):
+            if nums[i] >= s:
+                l = self.findLeft(nums, l, i, value, s)
+                res = min(res, i-l+1)
+        return res if res <= n else 0
+    
+    def findLeft(self, nums, l, r, value, s):
+        while l < r:
+            mid = l + (r - l)/2
+            if value - nums[mid] < s:
+                r = mid 
+            else:
+                l = mid + 1
+        return l
+
 
