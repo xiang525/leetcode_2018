@@ -80,6 +80,29 @@ class Solution(object):
         return res
 
 
+"""
+more concise code
+"""
+class Solution(object):
+    def maxProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        if n == 0:
+            return 0
+        mn, mx, res = nums[0], nums[0], nums[0]
+        for i in range(1, n):
+            if nums[i] < 0:
+                mx, mn = mn, mx
+            mx = max(nums[i], nums[i]*mx)
+            mn = min(nums[i], nums[i]*mn)
+
+            res = max(res, mx)
+        return res
+
+
 
 
 
