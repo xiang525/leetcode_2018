@@ -1,30 +1,28 @@
 class Solution(object):
-    def maxSlidingWindow(self, nums, k):
+    def strStr(self, haystack, needle):
         """
-        :type nums: List[int]
-        :type k: int
-        :rtype: List[int]
+        :type haystack: str
+        :type needle: str
+        :rtype: int
         """
-        n = len(nums)
-        ans = []
-        if n == 0:
-            return ans
-        start = 0
-        
-        while start <= n-k:
-            end = start + k
-            print(start, end)
-            max_value = max(nums[start:end])
-            print (max_value)
-            ans.append(max_value)
-            start += 1
-        return ans
+        if needle == '':
+            return 0
+        n = len(haystack)
+        m = len(needle)
+        i = 0
+        while i+m-1 < n:
+           
+            if haystack[i] == needle[0] and ''.join(haystack[i:i+m]) == needle:                
+                return i
+            else:
+                i += 1
+
+        return -1
 
 
 
 
 a = Solution()
-nums = [1, 3, -1, -3, 5, 3, 6, 7]
-k = 3
-print(a.maxSlidingWindow(nums, k))
-
+haystack = "hello"
+needle = "ll"
+a.strStr(haystack, needle)

@@ -39,6 +39,31 @@ class Solution:
             if haystack[i:i+n] == needle:  # because of here counts to n thus the above line needs to substract n
                 return i 
         return -1
+
+"""
+另一种写法， 不够简洁
+"""
+
+class Solution(object):
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        if needle == '':
+            return 0
+        n = len(haystack)
+        m = len(needle)
+        i = 0
+        while i+m-1 < n:
+
+            if haystack[i] == needle[0] and ''.join(haystack[i:i+m]) == needle:
+                return i
+            else:
+                i += 1
+
+        return -1
                     
 
 
