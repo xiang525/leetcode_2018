@@ -65,10 +65,32 @@ class Solution(object):
         for key in d:
             ans.append(sorted(d[key]))
         return ans
-        
 
+"""
+A similar writing way
+"""     
 
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        ans = []
+        d = {}
+        n = len(strs)
+        if n == 0:
+            return ans
+        for word in strs:
+            key = ''.join(sorted(word))
+            if key not in d:
+                d[key] = [word]
+            else:
+                d[key] += [word]
 
+        for key in d:
+            ans += [d[key]]
+        return ans
 
 
 
