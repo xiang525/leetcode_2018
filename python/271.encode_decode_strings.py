@@ -1,3 +1,6 @@
+"""
+用字符串的长度和结束字符来encode
+"""
 class Solution:
 
     def encode(self, strs):
@@ -30,10 +33,4 @@ class Solution:
             i = index+1+size
         
         return ans
-        
-strs = 'hello world'
-
-a = Solution()
-a.decode(a.encode(strs))
-
-
+            
