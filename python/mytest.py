@@ -1,28 +1,17 @@
+import collections
 class Solution(object):
-    def strStr(self, haystack, needle):
-        """
-        :type haystack: str
-        :type needle: str
-        :rtype: int
-        """
-        if needle == '':
-            return 0
-        n = len(haystack)
-        m = len(needle)
-        i = 0
-        while i+m-1 < n:
-           
-            if haystack[i] == needle[0] and ''.join(haystack[i:i+m]) == needle:                
-                return i
-            else:
-                i += 1
-
-        return -1
-
-
+    def leastInterval(self, tasks, N):
+        task_counts = collections.Counter(tasks).values()
+        print(task_counts)
+        M = max(task_counts)
+        print(M)
+        Mct = task_counts.count(M)
+        print(Mct)
+        return max(len(tasks), (M - 1) * (N + 1) + Mct)
+        
 
 
 a = Solution()
-haystack = "hello"
-needle = "ll"
-a.strStr(haystack, needle)
+tasks = ["A","A","A","B","B","B","C"]; n = 2
+a.leastInterval(tasks, n)
+

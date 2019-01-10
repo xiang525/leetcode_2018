@@ -26,6 +26,7 @@ class Solution:
     	
 """
 # Solution: two pointers, prev and cur
+此题完整无误的写出来还是不容易的
 """
 
 
