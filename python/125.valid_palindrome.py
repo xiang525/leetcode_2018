@@ -41,5 +41,20 @@ class Solution(object):
         return ans[:] == ans[::-1]
 
 
+"""
+Another method
+"""class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        res = []
+        for e in s:
+            if '0' <= e <= '9' or 'a' <= e.lower() <= 'z':
+                res.append(e.lower())
+        return res[::] == res[::-1]
+
+
 
 
