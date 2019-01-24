@@ -1,39 +1,25 @@
-class Solution:
-
-    def encode(self, strs):
-        """Encodes a list of strings to a single string.
-        
-        :type strs: List[str]
-        :rtype: str
+class Solution(object):
+    def plusOne(self, digits):
         """
-        res = ''
-        for e in strs:
-            res += str(len(e)) + ':'+ e
-        
-        return res
-        
-
-    def decode(self, s):
-        """Decodes a single string to a list of strings.
-        
-        :type s: str
-        :rtype: List[str]
+        :type digits: List[int]
+        :rtype: List[int]
         """
-        ans = []
-        i = 0
-        while i < len(s):
-            index = s.find(':',i) # substring search from i 
-            
-            size = int(s[i:index])  # get the length of current string 
-            print(s[i:index])         
-            ans.append(s[index+1:index+1+size])
-            i = index+1+size
-        
-        return ans
-        
-strs = 'hello world'
+        carry = 1
+        i = len(digits) - 1
+        while carry and i >= 0:            
+            d = digits[i] + carry
+            print("begin: ",d, digits[i])
+            carry = d / 10
+            digits[i] = d % 10
+            print(carry, digits[i], d)
+            i -= 1
+        if carry:
+            return [1] + digits
+        else:
+            return digits
 
 a = Solution()
-a.decode(a.encode(strs))
+digits = [1,9,9]
+print(a.plusOne(digits))
 
 

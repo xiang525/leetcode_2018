@@ -1,3 +1,7 @@
+"""
+先变回整数，然后+1，最后再变回来
+"""
+
 class Solution:
     # @param {integer[]} digits
     # @return {integer[]}
@@ -13,7 +17,7 @@ class Solution:
 
 
 """
-Solution 2:
+Solution 2: 直接处理进位
 """
 def plusOne(self, digits):
         carry = 1
@@ -21,7 +25,7 @@ def plusOne(self, digits):
         while carry and i >= 0:
             d = digits[i] + carry
             carry = d / 10
-            digits[i] = d % 10
+            digits[i] = d % 10 # only for the first digit
             i -= 1
         if carry:
             return [1] + digits
