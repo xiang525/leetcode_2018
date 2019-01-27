@@ -14,7 +14,7 @@ class Solution:
     	 elif n < 0:
     	 	return 1/ self.myPow(x,-n)
     	 elif n % 2:
-    	 	return self.myPow(x*x,n/2)*x # e.g., n = 5
+    	 	return self.myPow(x*x,n/2)*x # e.g., n = 5 分 odd and even two cases
     	 else:
     	 	return self.pow(x*x,n/2)
 

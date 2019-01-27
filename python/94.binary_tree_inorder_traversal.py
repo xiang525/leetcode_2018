@@ -95,6 +95,28 @@ class Solution:
         self.recursive_inorder(root,list)
         return list
 
+"""
+more concise code
+"""
+class Solution(object):
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        inorder = []
+        if not root: return inorder
+        stack = []
+        while root or stack:
+            if root:
+                stack.append(root)
+                root = root.left
+            else:
+                root = stack.pop()
+                inorder.append(root.val)
+                root = root.right
+        return inorder
+
 
 
 

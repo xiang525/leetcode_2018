@@ -7,8 +7,7 @@ class Solution:  # 筛选法
     def countPrimes(self, n):
         if n <= 2:  # no prime
             return 0        
-        is_prime = [True] * n
-        #sqr = sqrt(n - 1)        
+        is_prime = [True] * n               
         num = 0
         for i in xrange(2, n):
             if is_prime[i]:

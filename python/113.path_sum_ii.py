@@ -32,6 +32,7 @@ class Solution:
 # ********* The Second Time *********
 """
 # 解题思路：这题需要将根到叶子的路径和为sum的路径都枚举出来。一样是使用递归。
+最后是以value值的形式输出的，所以递归的时候要用value
 """
 
 # Definition for a binary tree node.
