@@ -56,28 +56,7 @@ class Solution(object):
 
 
 
-# 一下写法通不过， 答案错误
-# ********* The Second Time *********
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
 
-class Solution:
-    # @param {TreeNode} root
-    # @return {integer}
-    def sumNumbers(self, root):
-        presum = 0
-        def dfs(root,presum):
-            if not root: return 0
-            presum = presum*10 + root.val
-            if root.left == None and root.right == None:
-                return presum                
-            
-            return    dfs(root.left,presum) + dfs(root.right,presum)
-        return presum
 
 
 
