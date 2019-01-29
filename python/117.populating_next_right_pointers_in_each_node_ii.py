@@ -2,6 +2,10 @@
 # 这道题的二叉树不是满的二叉树，有些节点是没有的。但是也可以按照递归的思路来完成。在编写递归的基准情况时
 # 需要将细节都考虑清楚：
 
+#这道是之前那道 Populating Next Right Pointers in Each Node 的延续，原本的完全二叉树的条件不再满足，
+#但是整体的思路还是很相似，仍然有递归和非递归的解法。我们先来看递归的解法，这里由于子树有可能残缺，
+#故需要平行扫描父节点同层的节点，找到他们的左右子节点。
+
 # Definition for binary tree with next pointer.
 # class TreeLinkNode:
 #     def __init__(self, x):
@@ -80,6 +84,29 @@ class Solution:
                 p = p.next
             self.connect(nextNode)
 
+
+"""
+下面这个做法没满足题目中的常数空间的要求，不过是个非递归的好做法，对完全二叉树也完全试用。
+做法就是把每层的节点放到一个队列里，把队列的每个元素进行弹出的时候，如果它不是该层的最后一个元素，
+那么把它指向队列中的后面的元素（不把后面的这个弹出）。
+"""
+class Solution:
+    # @param root, a tree link node
+    # @return nothing
+    def connect(self, root):
+        if not root: return
+        queue = collections.deque()
+        queue.append(root)
+        while queue:
+            size = len(queue)
+            for i in range(size):
+                node = queue.popleft()
+                if i < size - 1:
+                    node.next = queue[0]
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
 
 
 
