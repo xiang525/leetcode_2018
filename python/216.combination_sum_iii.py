@@ -19,28 +19,30 @@ class Solution:
 
 
         
-##########################################################
-# 一下解法老是不通过。。。。
-class Solution:
-    # @param {integer} k
-    # @param {integer} n
-    # @return {integer[][]}
+"""
+my own solution
+"""
+class Solution(object):
     def combinationSum3(self, k, n):
-        Solution.ans = []       
-        self.dfs(k,n,0,[])
-        Solution.count = 0
-        return Solution.ans
-
-    def dfs(self,k,target,start,value):
-
-        if target == 0 and Solution.count == k:            
-            Solution.ans.append(value)
-        for i in range(start+1,10):
-
-            if target < i or Solution.count > k:
-                return
-            Solution.count += 1
-            self.dfs(k,target-i,i+1,value+[i])
+        """
+        :type k: int
+        :type n: int
+        :rtype: List[List[int]]
+        """
+        def dfs(target, count, start, value):         
+            if target == 0 and count == k:
+                ans.append(value)
+                return 
+            for i in range(start+1, 10):
+                if count > k or target < 0:
+                    return
+                dfs(target-i, count+1, i, value+[i])
+                       
+            
+        ans = []
+        self.count = 0
+        dfs(n, 0, 0, [])
+        return ans
 
 
 

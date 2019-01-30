@@ -56,9 +56,9 @@ class Solution(object):
             if target == 0:
                 ans.append(value)
             for i in range(start,len(candidates)):
-                if target < candidates[i]:
+                if target < candidates[i]: # 这个条件很关键
                     return
-                dfs(candidates,target-candidates[i],i,value+[candidates[i]])
+                dfs(candidates,target-candidates[i],i,value+[candidates[i]]) # 用i不用i+1是为了重复选取， 要配合上面的条件一起
                 
         candidates.sort()  #关键在sort
         ans = []

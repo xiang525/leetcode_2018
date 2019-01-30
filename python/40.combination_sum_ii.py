@@ -19,6 +19,9 @@ class Solution:
 
 
 # ********* The third Time *********************
+"""
+Same idea as 39
+"""
 class Solution(object):
     def combinationSum2(self, candidates, target):
         """
