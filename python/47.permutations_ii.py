@@ -89,7 +89,24 @@ class Solution(object):
                 ans.append([nums[i]]+j)
         return ans
             
-
+"""
+与46一样的解法
+"""
+class Solution(object):
+    def permuteUnique(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        def dfs(nums, value):
+            if len(nums) == 0 and value not in ans:
+                ans.append(value)
+            for i in range(len(nums)):
+                dfs(nums[:i]+nums[i+1:], value+[nums[i]])
+            
+        ans = []
+        dfs(nums, [])
+        return ans
 
 
 

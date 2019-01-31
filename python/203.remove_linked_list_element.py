@@ -47,7 +47,25 @@ class Solution:
     		cur = cur.next
     	return dummy.next
 
-
+"""
+concise code
+Need a pre pointer as head could also been removed.
+"""
+class Solution(object):
+    def removeElements(self, head, val):
+        """
+        :type head: ListNode
+        :type val: int
+        :rtype: ListNode
+        """
+        dummy = ListNode(0); dummy.next = head; pre = dummy
+        while head:
+            if head.val == val:
+                pre.next = head.next
+            else:
+                pre = head
+            head = head.next
+        return dummy.next
 
 
     		
