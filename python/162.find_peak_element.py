@@ -1,4 +1,27 @@
-    """
+"""
+比较好理解的solution
+"""
+    def findPeakElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        left = 0
+        right = len(nums)-1    
+        while left < right-1:
+            mid = (left+right)/2
+            if nums[mid] > nums[mid+1] and nums[mid] > nums[mid-1]:
+                return mid
+            
+            if nums[mid] < nums[mid+1]:
+                left = mid+1
+            else:
+                right = mid-1
+            
+    
+        return left if nums[left] >= nums[right] else right
+
+"""
 # Binary search O(nlogn)
 # 思路：如果中间元素大于其相邻后续元素，则中间元素左侧(包含该中间元素）必包含一个局部最大值。
 # 如果中间元素小于其相邻后续元素，则中间元素右侧必包含一个局部最大值。
