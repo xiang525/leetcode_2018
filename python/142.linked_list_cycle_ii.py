@@ -1,9 +1,7 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
+"""
+首先，比较直观的是，先使用Linked List Cycle I的办法，判断是否有cycle。如果有，则从头遍历节点，对于每一个节点，
+查询是否在环里面，是个O(n^2)的法子。但是仔细想一想，发现这是个数学题。
+"""
 class Solution:
     # @param head, a ListNode
     # @return a list node

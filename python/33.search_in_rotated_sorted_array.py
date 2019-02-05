@@ -1,28 +1,7 @@
-class Solution:
-    # @param {integer[]} nums
-    # @param {integer} target
-    # @return {integer}
-    def search(self, nums, target):
-    	left = 0; right = len(nums) - 1
-    	while left <= right:
-    		mid = (left + right)/2
-    		if nums[mid] == target:
-    			return mid
-    		if nums[mid] >= nums[left]:
-    			if target > nums[left] and target < nums[mid]:
-    				right = mid - 1
-    			else:
-    				left = mid + 1
-    		elif nums[mid] < nums[right]:
-    			if target > nums[mid] and target < nums[right]:
-    				left = mid + 1
-    			else:
-    				right = mid -1
-    	return -1
-
 """
 # ******* The Second Time *******
 # 解题思路：二分查找的变种。分别讨论左边单调递增还是右边单调递增.
+# 用mid的值和最左和最右的值比较来决定search范围
 # As the sequence is rotated, for any mid element, either it is of order with its 
 # previous part, or it is of order with its next part. e.g. 561234, middle element 
 # 1 has an order with its next part 1234.
@@ -35,22 +14,22 @@ class Solution:
     # @param {integer} target
     # @return {integer}
     def search(self, nums, target):
-        left = 0; right = len(nums)-1
-        while left < right:
-            mid = (left + right)/2
-            if target == nums[mid]:
-                return mid
-            if nums[mid] >= nums[left]:
-                if nums[left]<= target < nums[mid]:
-                    right = mid - 1
-                else:
-                    left = mid + 1
-            elif nums[mid] < nums[right]:
-                if target > nums[mid] and target <= nums[right]:
-                    left = mid + 1
-                else:
-                    right = mid -1
-        return -1
+    	left = 0; right = len(nums) - 1
+    	while left <= right:
+    		mid = (left + right)/2
+    		if nums[mid] == target:
+    			return mid
+    		if nums[mid] >= nums[left]:
+    			if target >= nums[left] and target < nums[mid]:
+    				right = mid - 1
+    			else:
+    				left = mid + 1
+    		else:
+    			if target > nums[mid] and target <= nums[right]:
+    				left = mid + 1
+    			else:
+    				right = mid -1
+    	return -1
 
 
 

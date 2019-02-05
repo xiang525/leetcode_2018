@@ -55,7 +55,7 @@ class Solution:
         while p.next:
             p = p.next
             count += 1
-        p.next = dummy.next  # 这里不是重新回到起点而是将为指针指向头指针， 将整个圈起来
+        p.next = dummy.next (p.next = head)  # 这里不是重新回到起点而是将为指针指向头指针， 将整个圈起来
         step = count - k % count # 右移 k 位 means p has to be in the position of count - k
         for i in range(0,step):  # because the next position will be the head
             p = p.next

@@ -101,7 +101,7 @@ class Solution:
         head1 = head
         head2 = slow.next
         slow.next = None  # 容易忘记这一步
-        head1 = self.sortList(head1)
+        head1 = self.sortList(head1)  # key step recursive
         head2 = self.sortList(head2)
         head = self.merge(head1,head2)
         return head

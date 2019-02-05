@@ -91,7 +91,7 @@ class Solution(object):
             if p.next.val == head.next.val:
                 while p and head.next and p.next.val == head.next.val: # p不动,head动所以判断p和head.next
                     head = head.next
-                head = head.next #这两个的顺序容易错
+                head = head.next #这两个的顺序容易错,完了之后两个指针都要挪动
                 p.next = head
             else: 
                 head = head.next

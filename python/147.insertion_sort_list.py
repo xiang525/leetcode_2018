@@ -19,7 +19,7 @@ class Solution:
     		if curr.next.val < curr.val:
     			pre = dummy
     			while pre.next.val < curr.next.val:
-    				pre = pre.next # find insertion position
+    				pre = pre.next # find insertion position,从头开始loop找插入的位置
     			tmp = curr.next
     			curr.next = tmp.next
     			tmp.next = pre.next

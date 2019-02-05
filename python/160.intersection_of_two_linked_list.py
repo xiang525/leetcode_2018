@@ -19,7 +19,7 @@ class Solution:
         		pb = headA
         	else:
         		pb = pb.next
-      	return pa
+      	return pa # return pa or pb either one is fine.
 
 
 # *************** The Second Time ***************

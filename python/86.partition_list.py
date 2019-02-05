@@ -59,12 +59,12 @@ class Solution:
                 p1.next = tmp
                 tmp = tmp.next
                 p1 = p1.next
-                p1.next = None
+                p1.next = None # if no this line then it is not an independent linkedlist
             else:
                 p2.next = tmp
                 tmp = tmp.next
                 p2 = p2.next
-                p2.next = None
+                p2.next = None # if no this line then it is not an independent linkedlist
         p1.next = head2.next
         head = head1.next
         return head
