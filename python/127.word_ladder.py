@@ -33,21 +33,25 @@ class Solution:
 
 
 
-        wordList.add(endWord)
-        q = []
-        q.append((beginWord,1))
-        while q:            
-            curr = q.pop(0)
-            currword = curr[0]; currlen = curr[1]
-            if currword == endWord:return currlen
-            for i in range(len(beginWord)):
-                part1 = currword[:i];part2 = currword[i+1:]
-                for j in 'abcdefghijkmnopqrstuvwxyz':
-                    if currword[i]!= j:
-                        nextword = part1+j+part2                        
-                        if nextword in wordList:
-                            q.append((nextword,currlen+1))
-                            wordList.remove(nextword)
-                           
+class Solution(object):
+    def ladderLength(self, beginWord, endWord, wordList):
+        """
+        :type beginWord: str
+        :type endWord: str
+        :type wordList: List[str]
+        :rtype: int
+        """
+        wordList = set(wordList)
+        queue = collections.deque([[beginWord, 1]])
+        while queue:
+            word, length = queue.popleft()
+            if word == endWord:
+                return length
+            for i in range(len(word)):
+                for c in 'abcdefghijklmnopqrstuvwxyz':
+                    next_word = word[:i] + c + word[i+1:]
+                    if next_word in wordList:
+                        wordList.remove(next_word)
+                        queue.append([next_word, length + 1])
         return 0
 

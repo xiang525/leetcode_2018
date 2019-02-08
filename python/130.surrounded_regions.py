@@ -10,63 +10,38 @@
 """
 
 
-class Solution: # bfs
-    # @param {character[][]} board
-    # @return {void} Do not return anything, modify board in-place instead.
-
-
+class Solution(object):
     def solve(self, board):
-    	def fill(x,y):
-    		if x < 0 or x > m-1 or y < 0 or y > n-1 or board[x][y] !='O': # bfs中只对边界上的点bfs
-    			return
-    		queue.append((x,y))
-    		board[x][y] = '$' # 边界上为'O'的暂时赋值'$'
-
-    	def bfs(x,y):
-    		if board[x][y] == 'O':
-    			queue.append((x,y))
-    			fill(x,y)
-    		while queue:
-    			curr = queue.pop(0)
-    			i = curr[0]
-    			j = curr[1]
-    			fill(i+1,j);fill(i-1,j);fill(i,j+1);fill(i,j-1) # 从边界'O'可以到达的'O'也是不能被替换的所以要赋值为'$'
-
-
-
-    	if len(board) == 0: return 
-    	m = len(board); n = len(board[0])
-    	queue = []  # bfs always uses a queue
-    	for i in range(n): # 边界4条边中的两个
-    		bfs(0,i); bfs(m-1,i)
-    	for j in range(1,m-1):
-    		bfs(j,n);bfs(j,n-1)
-    		
-    	# 最后的重置
-    	for i in range(m):
-    		for j in range(n):
-    			if board[i][j] == '$':
-    				board[i][j] == 'O'
-    			elif board[i][j] == 'O':
-    				board[i][j] = 'X'
-
-# 此题多推敲几遍还是很有意思的
-def solve(self, board):
+        """
+        :type board: List[List[str]]
+        :rtype: void Do not return anything, modify board in-place instead.
+        """
         def fill(x, y):
             if x<0 or x>m-1 or y<0 or y>n-1 or board[x][y] != 'O': return
             queue.append((x,y))
             board[x][y]='D'
+
         def bfs(x, y):
-            if board[x][y]=='O':queue.append((x,y)); fill(x,y)
-            while queue:
-                curr=queue.pop(0); i=curr[0]; j=curr[1]
-                fill(i+1,j);fill(i-1,j);fill(i,j+1);fill(i,j-1)
+            if board[x][y]=='O':
+				queue.append((x,y))
+				fill(x,y)
+            for i, j in queue:               
+                fill(i+1,j)
+                fill(i-1,j)
+                fill(i,j+1)
+                fill(i,j-1)
+
         if len(board)==0: return
         m=len(board); n=len(board[0]); queue=[]
+		# 从四边开始找 0
         for i in range(n):
-            bfs(0,i); bfs(m-1,i)
-        for j in range(1, m-1):
-            bfs(j,0); bfs(j,n-1)
+            bfs(0,i)  # first row
+            bfs(m-1,i) # bottom row
+        for j in range(1, m-1): # begins from 1 as 0 was checked by the above 
+            bfs(j,0) 
+            bfs(j,n-1)
+
+		# 最后进行置换， 内部 0 换位 1， D --> 0
         for i in range(m):
             for j in range(n):
                 if board[i][j] == 'D': board[i][j] = 'O'
