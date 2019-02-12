@@ -60,12 +60,12 @@ class Solution(object):
         for i in path.split('/'):
             if i == '.' or i =='':continue
             elif i == '..':
-                if len(stack) > 1:
+                if len(stack) > 1: # 为0 没有可pop的
                     stack.pop()
             else:
                 stack.append(i+'/')
         if len(stack) > 1:
-            return ''.join(stack).rstrip('/')
+            return ''.join(stack).rstrip('/') # 尾部移掉'/'
         else:
             return ''.join(stack)
 
