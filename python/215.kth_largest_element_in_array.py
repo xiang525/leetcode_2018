@@ -60,6 +60,26 @@ class Solution(object):
             return pivot
 
 
+"""
+用最大堆
+"""
+class Solution(object):
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        nums = [-num for num in nums]
+        heapq.heapify(nums)
+        res = float('inf')
+        for _ in range(k):
+            res = heapq.heappop(nums)
+        return -res
+
+
+More explonations: https://leetcode.com/problems/kth-largest-element-in-an-array/discuss/167837/Python-or-tm
+
 if __name__ == '__main__':
 	a = Solution()
 	a.findKthLargest([2,1], 1)
