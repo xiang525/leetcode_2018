@@ -13,6 +13,7 @@ Note: 其实是出于效率的考虑，在某些场合，并不需要多份数�
 Python 中，array 默认的复制是 shallow copy,  可以采用 copy 模块的 deep copy
 
 http://blog.csdn.net/shoulinjun/article/details/18730871
+
 """
 
 # Definition for singly-linked list with a random pointer.
@@ -92,6 +93,12 @@ class Solution:
 
 """
 九章hashmap 的解法
+题解：
+如果要copy一个带有random pointer的list，主要的问题就是有可能这个random指向的位置还没有被copy到，所以解决方法都是多次扫描list。
+第一种方法，就是使用HashMap来坐，HashMap的key存原始pointer，value存新的pointer。
+第一遍，先不copy random的值，只copy数值建立好新的链表。并把新旧pointer存在HashMap中。
+第二遍，遍历旧表，复制random的值，因为第一遍已经把链表复制好了并且也存在HashMap里了，所以只需从HashMap中，把当前旧的node.random作为key值，得到新的value的值，并把其赋给新node.random就好。
+可以合并两遍scan为一个
 """
 class Solution:
     # @param head, a RandomListNode
@@ -113,6 +120,44 @@ class Solution:
                     newNode.random = d[head.random]
                 else:
                     newNode.random = RandomListNode(head.random.label)
+                    d[head.random] = newNode.random
+            pre = newNode
+            head = head.next
+        return dummy.next
+
+
+"""
+New version
+"""
+ Definition for a Node.
+class Node(object):
+    def __init__(self, val, next, random):
+        self.val = val
+        self.next = next
+        self.random = random
+"""
+class Solution(object):
+    def copyRandomList(self, head):
+        """
+        :type head: Node
+        :rtype: Node
+        """
+        if not head:return None
+        d = {}
+        dummy = ListNode(0); pre = dummy
+        while head:
+            if head in d:
+                newNode = d[head]
+            else:
+                newNode = Node(head.val,None, None)
+                d[head] = newNode
+            pre.next = newNode
+            
+            if head.random:
+                if head.random in d:
+                    newNode.random = d[head.random]
+                else:
+                    newNode.random = Node(head.random.val, None, None)
                     d[head.random] = newNode.random
             pre = newNode
             head = head.next

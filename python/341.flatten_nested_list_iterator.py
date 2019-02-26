@@ -1,0 +1,25 @@
+class NestedIterator(object):
+
+    def __init__(self, nestedList):
+        """
+        Initialize your data structure here.
+        :type nestedList: List[NestedInteger]
+        """
+        self.stack = nestedList[::]
+        
+    def next(self):
+        """
+        :rtype: int
+        """
+        return self.stack.pop(0)
+
+    def hasNext(self):
+        """
+        :rtype: bool
+        """
+        while self.stack:
+            top = self.stack[0]
+            if top.isInteger():
+                return True
+            self.stack = top.getList() + self.stack[1:] # remember to add the previous stack
+        return False

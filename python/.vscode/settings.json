@@ -1,5 +1,6 @@
 {
     "python.pythonPath": "/usr/local/opt/python/bin/python3.6",
     "python.linting.pylintEnabled": false,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "git.ignoreLimitWarning": true
 }
